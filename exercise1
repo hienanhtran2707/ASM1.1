@@ -1,0 +1,63 @@
+cd desktop
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~
+$ cd desktop
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ssh -i busa8090_s1_2020_45741271.pem ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1032-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 19 12:57:18 UTC 2020
+
+  System load:  0.08              Processes:           100
+  Usage of /:   27.9% of 7.69GB   Users logged in:     1
+  Memory usage: 43%               IP address for eth0: 172.31.26.119
+  Swap usage:   0%
+
+ * Latest Kubernetes 1.18 beta is now available for your laptop, NUC, cloud
+   instance or Raspberry Pi, with automatic updates to the final GA release.
+
+     sudo snap install microk8s --channel=1.18/beta --classic
+
+ * Multipass 1.1 adds proxy support for developers behind enterprise
+   firewalls. Rapid prototyping for cloud operations just got easier.
+
+     https://multipass.run/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+106 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Thu Mar 19 08:59:13 2020 from 114.73.173.123
+ubuntu@ip-172-31-26-119:~$ touch -t 202003151800 foo
+ubuntu@ip-172-31-26-119:~$ touch -t 202003151801 goo
+ubuntu@ip-172-31-26-119:~$ touch -t 202003151802 hoo
+ubuntu@ip-172-31-26-119:~$ ls
+ 8090_fun          dump.sql              nano.save     time-signal
+ Awk_Programs      exercise1             output1.txt   time-signal.sh
+ Newer.sh          exercise3bcd.txt      program       time-signal.sh_1
+'Program 24'       expression.tab        ql            time-signal.sh_2
+ Text              file-time-signal      query.sql     time-signal.sh_3
+ annotation.tab    file-time-signal.sh   signal        time-signal.sh_4
+ beg-sql-queries   file-with-date        sorted-file   uauauauau
+ bin               foo                   tartest
+ con-sh-exe.sh     goo                   the.date
+ dna-test.sh       hoo                   thedate
+ubuntu@ip-172-31-26-119:~$ nano
+ubuntu@ip-172-31-26-119:~$ find . –type f –printf '%T@ %TY-%Tm-%Td %TH:%TM:%TS %p\n' | sort –rn | head -3 | cut -f2- -d " "
+sort: cannot read: –rn: No such file or directory
+ubuntu@ip-172-31-26-119:~$ find . –type f –printf '%T@ %TY-%Tm-%Td %TH:%TM:%TS %p\n' | sort –r | head -3 | cut -f2- -d " "
+sort: cannot read: –r: No such file or directory
+ubuntu@ip-172-31-26-119:~$
