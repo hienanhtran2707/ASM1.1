@@ -1,0 +1,332 @@
+cd desktop
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~
+$ cd desktop
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--time-signal.sh -o time-signal.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   224  100   224    0     0    176      0  0:00:01  0:00:01 --:--:--   176
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ls time-signal.sh
+time-signal.sh*
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ chmod u+x time-signal.sh
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ./time-signal.sh
+
+c
+
+
+
+
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ nano time-signal.sh
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ls time-signal.sh_2
+time-signal.sh_2*
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ chmod u+x time-signal.sh_2
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ./time-signal.sh_2
+
+./time-signal.sh_2: line 6: test: count+1: integer expression expected
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ cat time-signal.sh_2
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=count+1
+done
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ scp -i busa8090_s1_2020_45741271.pem time-signal.sh_2 ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com:
+time-signal.sh_2                              100%  220     7.7KB/s   00:00
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ssh -i busa8090_s1_2020_45741271.pem ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1032-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 19 08:31:21 UTC 2020
+
+  System load:  0.0               Processes:           95
+  Usage of /:   27.9% of 7.69GB   Users logged in:     1
+  Memory usage: 43%               IP address for eth0: 172.31.26.119
+  Swap usage:   0%
+
+ * Latest Kubernetes 1.18 beta is now available for your laptop, NUC, cloud
+   instance or Raspberry Pi, with automatic updates to the final GA release.
+
+     sudo snap install microk8s --channel=1.18/beta --classic
+
+ * Multipass 1.1 adds proxy support for developers behind enterprise
+   firewalls. Rapid prototyping for cloud operations just got easier.
+
+     https://multipass.run/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+106 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Thu Mar 19 06:40:12 2020 from 114.73.173.123
+ubuntu@ip-172-31-26-119:~$ ls
+ 8090_fun          dna-test.sh           output1.txt   thedate
+ Awk_Programs      dump.sql              program       time-signal
+'Program 24'       exercise1             ql            time-signal.sh
+ Text              expression.tab        query.sql     time-signal.sh_1
+ annotation.tab    file-time-signal      signal        time-signal.sh_2
+ beg-sql-queries   file-time-signal.sh   sorted-file   time-signal.sh_3
+ bin               file-with-date        tartest       uauauauau
+ con-sh-exe.sh     nano.save             the.date
+ubuntu@ip-172-31-26-119:~$ ls time-signal.sh_2
+time-signal.sh_2
+ubuntu@ip-172-31-26-119:~$ cat time-signal.sh_2
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=count+1
+done
+
+ubuntu@ip-172-31-26-119:~$ exit
+logout
+Connection to ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com closed.
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ nano time-signal.sh
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ls time-signal.sh_3
+time-signal.sh_3*
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ chmod u+x time-signal.sh_3
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ./time-signal.sh_3
+
+./time-signal.sh_3: line 9: expr0+1: command not found
+./time-signal.sh_3: line 6: test: -lt: unary operator expected
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ scp -i busa8090_s1_2020_45741271.pem time-signal.sh_3 ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com:
+time-signal.sh_3                              100%  228     9.7KB/s   00:00
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ cat time-signal.sh_3
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=$(expr$count+1)
+done
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ssh -i busa8090_s1_2020_45741271.pem ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1032-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 19 08:38:23 UTC 2020
+
+  System load:  0.0               Processes:           95
+  Usage of /:   27.9% of 7.69GB   Users logged in:     1
+  Memory usage: 43%               IP address for eth0: 172.31.26.119
+  Swap usage:   0%
+
+ * Latest Kubernetes 1.18 beta is now available for your laptop, NUC, cloud
+   instance or Raspberry Pi, with automatic updates to the final GA release.
+
+     sudo snap install microk8s --channel=1.18/beta --classic
+
+ * Multipass 1.1 adds proxy support for developers behind enterprise
+   firewalls. Rapid prototyping for cloud operations just got easier.
+
+     https://multipass.run/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+106 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Thu Mar 19 08:31:22 2020 from 114.73.173.123
+ubuntu@ip-172-31-26-119:~$ ls
+ 8090_fun          dna-test.sh           output1.txt   thedate
+ Awk_Programs      dump.sql              program       time-signal
+'Program 24'       exercise1             ql            time-signal.sh
+ Text              expression.tab        query.sql     time-signal.sh_1
+ annotation.tab    file-time-signal      signal        time-signal.sh_2
+ beg-sql-queries   file-time-signal.sh   sorted-file   time-signal.sh_3
+ bin               file-with-date        tartest       uauauauau
+ con-sh-exe.sh     nano.save             the.date
+ubuntu@ip-172-31-26-119:~$ ls time-signal.sh_3
+time-signal.sh_3
+ubuntu@ip-172-31-26-119:~$ cat time-signal.sh_3
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=$(expr$count+1)
+done
+
+ubuntu@ip-172-31-26-119:~$ exit
+logout
+Connection to ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com closed.
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ nano time-signal.sh
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ls time-signal.sh_4
+time-signal.sh_4
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ chmod u+x time-signal.sh_4
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ./time-signal.sh_4
+
+
+
+
+
+
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ cat time-signal.sh_4
+
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=$((count+1))
+done
+
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ scp -i busa8090_s1_2020_45741271.pem time-signal.sh_4 ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com:
+time-signal.sh_4                              100%  226    11.7KB/s   00:00
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~/desktop
+$ ssh -i busa8090_s1_2020_45741271.pem ubuntu@ec2-3-106-58-56.ap-southeast-2.compute.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1032-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Mar 19 08:41:06 UTC 2020
+
+  System load:  0.07              Processes:           95
+  Usage of /:   27.9% of 7.69GB   Users logged in:     1
+  Memory usage: 43%               IP address for eth0: 172.31.26.119
+  Swap usage:   0%
+
+ * Latest Kubernetes 1.18 beta is now available for your laptop, NUC, cloud
+   instance or Raspberry Pi, with automatic updates to the final GA release.
+
+     sudo snap install microk8s --channel=1.18/beta --classic
+
+ * Multipass 1.1 adds proxy support for developers behind enterprise
+   firewalls. Rapid prototyping for cloud operations just got easier.
+
+     https://multipass.run/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+106 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Thu Mar 19 08:38:24 2020 from 114.73.173.123
+ubuntu@ip-172-31-26-119:~$ ls
+ 8090_fun          dna-test.sh           output1.txt   thedate
+ Awk_Programs      dump.sql              program       time-signal
+'Program 24'       exercise1             ql            time-signal.sh
+ Text              expression.tab        query.sql     time-signal.sh_1
+ annotation.tab    file-time-signal      signal        time-signal.sh_2
+ beg-sql-queries   file-time-signal.sh   sorted-file   time-signal.sh_3
+ bin               file-with-date        tartest       time-signal.sh_4
+ con-sh-exe.sh     nano.save             the.date      uauauauau
+ubuntu@ip-172-31-26-119:~$ ls time-signal.sh_4
+time-signal.sh_4
+ubuntu@ip-172-31-26-119:~$ cat time-signal.sh_4
+
+#!/bin/bash
+# save as time-signal.sh
+# gives a time signal every hour when connected to cron
+time=$(date +%I)
+count=0
+while test $count -lt $time; do
+  echo -e "\a"
+  sleep 1 # sleep for one second
+  count=$((count+1))
+done
+
+ubuntu@ip-172-31-26-119:~$ command | tee exercise3bcd.txt
+ubuntu@ip-172-31-26-119:~$ < exercise3bcd.txt
+ubuntu@ip-172-31-26-119:~$
