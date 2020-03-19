@@ -1,0 +1,23 @@
+nano
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~
+$ nano
+
+PC@DESKTOP-90Q0GN3 MINGW64 ~
+$ test_me.sh
+bash: test_me.sh: command not found
+c
+PC@DESKTOP-90Q0GN3 MINGW64 ~
+$ cat test_me.sh
+#!/bin/bash
+#save as test_me.sh
+#require including an argument when invoking the script
+if [$# -eq 1]]; then
+echo "This is NOT a test"
+echo
+else
+find $1 -print -o > typing
+./test me.sh foo |
+sed -e 's/[^\/]*\//|--- /g' -e 's/--- |/ |/g'; then
+echo "This is a TEST"
+fi
